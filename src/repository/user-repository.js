@@ -22,7 +22,7 @@ class UserRepository{
     }
 
     static update(id, param){
-        return user.findOneAndUpdate({_id:id}, {param}).exec()
+        return user.findOneAndUpdate({_id:id}, param).exec()
     }
 
     static delete(id){

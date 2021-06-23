@@ -15,6 +15,7 @@ app.use(express.urlencoded({extended:false}))
 app.use(mainRoute)
 app.use(require('./src/middleware/errHandler'))
 
+
 app.listen(PORT, ()=>{
     console.log(`Server listening at port ${PORT}`)
 })

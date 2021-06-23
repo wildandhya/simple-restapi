@@ -10,14 +10,14 @@ class UserController {
   }
 
   static getUserByAccountNumber(req, res, next) {
-    const {accountNumber} = req.params
+    const {accountNumber} = req.query
     UserService.getUserByAccountNumber(accountNumber).then((data)=>{
       return response.success(res, 200, "Success get data user", data)
     }).catch(next)
   }
 
   static getUserByIndentityNumber(req, res, next) {
-    const {identityNumber} = req.params
+    const {identityNumber} = req.query
     UserService.getUserByIndentityNumber(identityNumber).then((data)=>{
       return response.success(res, 200, "Success get data user", data)
     }).catch(next)
@@ -26,18 +26,19 @@ class UserController {
   static createUser(req, res, next) {
     const {username, email, accountNumber, identityNumber} = req.body
     UserService.createUser(username, email, accountNumber, identityNumber).then((data)=>{
-      return response.success(res, 200, "Success update user", data)
+      return response.success(res, 200, "Success create user", data)
     }).catch(next)    
   }
 
   static updateUser(req, res, next) {
     const {id} = req.params
-    UserService.updateUser(id, ...req.body).then((data)=>{
+    let param = {...req.body}
+    UserService.updateUser(id, param).then((data)=>{
       return response.success(res, 200, "Success update user", data)
     }).catch(next)  
   }
 
-  static async deleteUser(req, res, next) {
+  static deleteUser(req, res, next) {
     const {id} = req.params
     UserService.deleteUser(id).then((data)=>{
       return response.success(res, 200, "Success delete user", data)

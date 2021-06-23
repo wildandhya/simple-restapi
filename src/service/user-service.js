@@ -22,8 +22,8 @@ class UserService {
     );
   }
 
-  static updateUser(id, body) {
-    return UserRepository.update(id, body);
+  static updateUser(id, param) {
+    return UserRepository.update(id, param);
   }
 
   static deleteUser(id) {
